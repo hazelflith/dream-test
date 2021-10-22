@@ -13,7 +13,7 @@ npm run serve
 
 ### RUN JSON Server
 ```
-json-serve --watch (JSON path) or data/products.json
+json-server --watch (JSON path) or data/products.json
 ```
 
 ### Lints and fixes files
