@@ -3,6 +3,7 @@
 ## Project setup
 ```
 npm install
+npm install -g json-serve
 ```
 
 ### Compiles and hot-reloads for development
@@ -10,9 +11,9 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### RUN JSON Server
 ```
-npm run build
+json-serve --watch (JSON path) or data/products.json
 ```
 
 ### Lints and fixes files
