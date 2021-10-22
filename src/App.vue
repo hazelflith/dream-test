@@ -223,11 +223,11 @@ export default {
       flex-direction: row;
     }
     .number-container{
-      width: auto;
-      height: auto;
+      width: 75px;
+      height: 75px;
       margin:20px;
       margin-right:5px;
-      padding: 30px;
+      padding: 0px;
       padding-top: 20px;
       padding-bottom: 20px;
 
@@ -235,11 +235,11 @@ export default {
       border-radius: 10px;
     }
     .number-container-ok{
-      width: auto;
-      height: auto;
+      width: 75px;
+      height: 75px;
       margin:20px;
       margin-right:5px;
-      padding: 30px;
+      padding: 0px;
       padding-top: 20px;
       padding-bottom: 20px;
 
