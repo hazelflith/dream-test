@@ -41,22 +41,28 @@ export default {
       sales: []
     }
   },
-  mounted(){
-    fetch('http://localhost:3000/products/')
+   async mounted(){
+    let fetchedProducts = []
+    await fetch('http://localhost:3000/products/')
     .then(res=> res.json())
-    .then(data => this.products = data)
+    .then(data => {
+      fetchedProducts = data
+      for (const product of fetchedProducts) {
+        product.sold = 0
+      }
+    })
 
-    fetch('http://localhost:3000/sales/')
+    await fetch('http://localhost:3000/sales/')
     .then(res=> res.json())
     .then(data => this.sales = data)
+    .then(() => {
+      for (const sale of this.sales) {
+        fetchedProducts.find(product => product.id === sale.product_id).sold += sale.qty
+      }
+    })
     .catch(err=> console.log(err.message))
-
-    this.products.forEach(product => {
-      product.sold = 0
-    });
-
-    this.sales.forEach(sale => {
-      this.products.find(product => product.id === sale.product_id).sold += sale.qty
+    .finally(() => {
+      this.products = fetchedProducts
     })
 
     // for (const product of this.products){
