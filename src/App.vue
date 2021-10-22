@@ -32,22 +32,39 @@
   </div>
 </template>
 
-<script src="dummyData.js"></script>
-
 <script>
 
 export default {
   data(){
     return{
       products: [],
-      
+      sales: []
     }
   },
   mounted(){
-    fetch('http://localhost:3000/product/')
+    fetch('http://localhost:3000/products/')
     .then(res=> res.json())
     .then(data => this.products = data)
+
+    fetch('http://localhost:3000/sales/')
+    .then(res=> res.json())
+    .then(data => this.sales = data)
     .catch(err=> console.log(err.message))
+
+    this.products.forEach(product => {
+      product.sold = 0
+    });
+
+    this.sales.forEach(sale => {
+      this.products.find(product => product.id === sale.product_id).sold += sale.qty
+    })
+
+    // for (const product of this.products){
+    //   product.sold = 0
+    // }
+    // for (const sale in this.sales) {
+    //   this.products.find(product => product.id === sale.product_id).sold += sale.qty
+    // }
   },
   name: 'App'
 }
